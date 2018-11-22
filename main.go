@@ -58,7 +58,7 @@ func getParmSecret(r *http.Request, s string) string {
 		log.Printf("Url Param ' %s ' is missing", s)
 		return ""
 	}
-	log.Printf("%s is "+string(key), s)
+	//log.Printf("%s is "+string(key), s)
 	return string(key)
 }
 
@@ -74,7 +74,7 @@ func encryptString(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("encrypt text : %s \n into cipher : %s\n", plaintext, ciphertext)
+	log.Printf("encrypt text : %s \n into cipher : %x\n", plaintext, ciphertext)
 
 	json.NewEncoder(w).Encode(KeyListItem{ID: "1", Chipher: ciphertext})
 }
@@ -87,7 +87,7 @@ func createASecret(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("encrypt text : %s \ninto cipher : %s\n", plaintext, ciphertext)
+	log.Printf("encrypt text : %s \ninto cipher : %x\n", plaintext, ciphertext)
 
 	json.NewEncoder(w).Encode(KeyListItem{ID: "1", Chipher: ciphertext})
 }
